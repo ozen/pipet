@@ -1,15 +1,17 @@
 {
-    "frontends": [
-        {
-            "network": "tcp",
-            "address": ":80"
-        }
-    ],
+    "frontends": [{
+        "network": "tcp",
+        "address": ":80"
+    }],
 
     "backends": {
         "AMQP": {
             "network": "tcp",
             "address": "localhost:5672"
+        },
+        "WEBSTOMP": {
+            "network": "tcp",
+            "address": "localhost:15674"
         },
         "HTTP": {
             "network": "tcp",

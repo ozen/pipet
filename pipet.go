@@ -22,6 +22,8 @@ const (
     HTTP Protocol = "HTTP"
     // SSH protocol
     SSH Protocol = "SSH"
+    // WEBSTOMP protocol
+    WEBSTOMP Protocol = "WEBSTOMP"
 )
 
 // ConnectionInfo contains all variables that will be required
@@ -143,7 +145,11 @@ func GetApplicationProtocol(packet []byte) Protocol {
     switch {
       // checking order is important
     case strings.Contains(msg, "HTTP"):
-      return HTTP
+        if strings.Contains(msg, "/stomp/info") {
+            return WEBSTOMP
+        } else {
+            return HTTP
+        }
     case strings.Contains(msg, "SSH"):
       return SSH
     case strings.Contains(msg, "AMQP"):
