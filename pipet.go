@@ -145,7 +145,7 @@ func GetApplicationProtocol(packet []byte) Protocol {
     switch {
       // checking order is important
     case strings.Contains(msg, "HTTP"):
-        if strings.Contains(msg, "/stomp/info") {
+        if strings.Contains(msg, "/stomp") {
             return WEBSTOMP
         } else {
             return HTTP
